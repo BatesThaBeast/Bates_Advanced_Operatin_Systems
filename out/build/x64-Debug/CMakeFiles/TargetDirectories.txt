@@ -1,0 +1,3 @@
+C:/Users/John Bates/source/repos/Bates_Advanced_Operatin_Systems/out/build/x64-Debug/CMakeFiles/Bates_Advanced_Operating_Systems.dir
+C:/Users/John Bates/source/repos/Bates_Advanced_Operatin_Systems/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/John Bates/source/repos/Bates_Advanced_Operatin_Systems/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

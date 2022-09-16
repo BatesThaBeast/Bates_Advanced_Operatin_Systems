@@ -60,3 +60,14 @@ vector<string> Sdisk::block(string buffer, int b)
 
 	return blocks;
 }
+
+int sdisk::getblock(int blocknumber, string buffer)
+{
+	fstream iofile;
+	iofile.open(diskname.c.str(), ios::in);
+	if(blocknumber < 0 || blocknumber >= numberofblocks)
+	{
+		cout << "block doesn't exist."
+		return 0;
+	}
+}

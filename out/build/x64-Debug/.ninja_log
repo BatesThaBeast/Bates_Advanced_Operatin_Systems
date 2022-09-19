@@ -1,9 +1,6 @@
 # ninja log v5
 0	681	6849599599290354	CMakeFiles/Bates_Advanced_Operating_Systems.dir/passwordfile.cpp.obj	5ef267c14e4c6326
-1	181	6849600512915725	build.ninja	51af2eaa4cb8c175
-1	403	6849597130571797	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	fc5052165843b75b
-682	896	6849599601049790	Bates_Advanced_Operating_Systems.exe	2969bae3ae83baa8
-0	675	6849600519127473	CMakeFiles/Bates_Advanced_Operating_Systems.dir/sdisk.cpp.obj	cb03bd82903329b0
-676	885	6849600520916900	Bates_Advanced_Operating_Systems.exe	a20167b997825855
-1	689	6849744431466210	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	fc5052165843b75b
-691	905	6849744433252578	Bates_Advanced_Operating_Systems.exe	a20167b997825855
+1	181	6852416134654392	build.ninja	51af2eaa4cb8c175
+1	655	6852383676417776	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	fc5052165843b75b
+494	652	6852403286125075	Bates_Advanced_Operating_Systems.exe	a20167b997825855
+1	493	6852403284865341	CMakeFiles/Bates_Advanced_Operating_Systems.dir/sdisk.cpp.obj	cb03bd82903329b0

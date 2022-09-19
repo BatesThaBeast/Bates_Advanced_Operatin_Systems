@@ -1,62 +1,88 @@
 #include "sdisk.h"
 
 Sdisk::Sdisk(string diskname, int numberofblocks, int blocksize)
-{	
-	ifstream infile;
-	if (infile.good())
+{
+	this->diskname = diskname;//initialize diskname
+	this->numberofblocks = numberofblocks;//initialize numberofblocks
+	this->blocksize = blocksize;//initialize blocksize
+	ifstream indisk;//create variable to parse file
+	indisk.open(diskname.c_str());
+	if (indisk.fail())//if there is no file to open
 	{
-		infile.open(diskname);//try to open up the file that contains the disk
-		if (infile.is_open())//if the disk exist
+		indisk.close();
+		ofstream outdisk;//variable that will create file
+		outdisk.open(diskname.c_str());//create file
+		for (size_t i = 0; i < numberofblocks; i++)//loop through up to the number of blocks
 		{
-			thediskname = diskname;//set thediskname to diskname
-			string b;//b is the block being read
-			infile >> b;//read the first block
-			thenumberofblocks++;//count the number of blocks that have been added
-			theblocksize = b.size();//counts the size of the first block			
-			while (infile.good())//while still reading from file
+			for (size_t j = 0; j < blocksize; j++)//loop through up to the block size
 			{
-				theblocks.push_back(b);//add block to the block vector
-				thenumberofblocks++;//count the number of blocks that have been added
+				outdisk.put('#');//use # as a place holder for empty
 			}
 		}
-		else//if the disk does not exist
+	}	
+	else
+	{
+		int count = 0;
+		char c;
+		indisk.get(c);
+		while (indisk.good())
 		{
-			ofstream outfile;//create a variable to create a file
-			outfile.open(diskname); //create a file named whatever was input as diskname
-			thediskname = diskname;//set variable
-			thenumberofblocks = numberofblocks;//set variable
-			theblocksize = blocksize;//set variable
+			count++;
+			indisk.get(c);
+		}
+		if (count = blocksize * numberofblocks)
+		{
+			cout << "Correct disk size." << endl;
+			return;
+		}
+		else
+		{
+			cout << "Warning. Incorrect disk size." << endl;
+			return;
 		}
 	}
 }
-
-vector<string> Sdisk::block(string buffer, int b)
+int Sdisk::putblock(int blocknumber, string buffer)
 {
-	vector<string> blocks;//make a container for the blocks
-	int numberofblocks = 0;//initialize variable
-
-	if (buffer.length() % b == 0)
+	fstream iofile;
+	iofile.open(this->diskname.c_str(), ios::in | ios::out);
+	if (iofile.is_open())
 	{
-		numberofblocks = buffer.length() / b;
+		if (blocknumber < 0 || blocknumber >= this->numberofblocks)
+		{
+			cout << "block doesn't exist.";
+			return 0;
+		}
+		else
+		{
+			iofile.seekp(blocksize * blocknumber);
+			for (int i = 0; i < buffer.size(); i++)
+			{
+				iofile.put(buffer[i]);
+			}
+			iofile.close();
+		}
+	}	
+}
+int Sdisk::getblock(int blocknumber, string& buffer)
+{
+	fstream iofile;
+	iofile.open(this->diskname.c_str(), ios::in | ios::out);
+	if (blocknumber < 0 || blocknumber >= this->numberofblocks)
+	{
+		cout << "block doesn't exist.";
+		return 0;
 	}
 	else
 	{
-		numberofblocks = buffer.length() / b + 1;
+		iofile.seekg(blocksize * blocknumber);
+		buffer.clear();
+		char c;
+		for ( int i = 0; i < blocksize; i++)
+		{
+			iofile.get(c);
+			buffer.push_back(c);
+		}
+		iofile.close();
 	}
-
-	string tempblock;//used to increment through the blocks 
-	for (int i = 0; i < numberofblocks; i++)
-	{
-		tempblock = buffer.substr(b * i, b);
-		blocks.push_back(tempblock);
-	}
-
-	int lastblock = blocks.size() - 1;
-
-	for (int i = blocks[lastblock].length(); i < b; i++)
-	{
-		blocks[lastblock] += "#";
-	}
-
-	return blocks;
 }

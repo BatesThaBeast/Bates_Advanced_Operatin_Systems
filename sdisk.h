@@ -13,7 +13,7 @@ class Sdisk
 {
 public:
 /// <summary>
-/// creation of the disk with the "formatting" of the device. This is meant to replicate a disk drive.
+/// constructor: creation of the disk with the "formatting" of the device. This is meant to replicate a disk drive.
 /// </summary>
 /// <param name="diskname"></param>
 /// <param name="numberofblocks"></param>
@@ -33,22 +33,9 @@ int getblock(int blocknumber, string& buffer);
 /// <param name="buffer"></param>
 /// <returns></returns>
 int putblock(int blocknumber, string buffer);
-/// <summary>
-/// accessor: finds out how many blocks are on the disk
-/// </summary>
-/// <returns></returns>
-int getnumberofblocks();
-/// <summary>
-/// accessor: finds out the size of the blocks on disk
-/// </summary>
-/// <returns></returns>
-int getblocksize();
-vector<string> block(string buffer, int b);
 private:
-string thediskname;        // file name of software-disk
-int thenumberofblocks;     // number of blocks on disk
-int theblocksize;          // block size in bytes
-vector<string>theblocks;	//the actual blocks on the disk
-vector<int>blockposition;	//position of the block
+string diskname;        // file name of software-disk
+int numberofblocks;     // number of blocks on disk
+int blocksize;          // block size in bytes
 };
 #endif

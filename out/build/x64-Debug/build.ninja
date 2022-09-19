@@ -64,6 +64,13 @@ build CMakeFiles\Bates_Advanced_Operating_Systems.dir\sdisk.cpp.obj: CXX_COMPILE
   TARGET_COMPILE_PDB = CMakeFiles\Bates_Advanced_Operating_Systems.dir\
   TARGET_PDB = Bates_Advanced_Operating_Systems.pdb
 
+build CMakeFiles\Bates_Advanced_Operating_Systems.dir\filesys.cpp.obj: CXX_COMPILER__Bates_Advanced_Operating_Systems_Debug ..\..\..\filesys.cpp || cmake_object_order_depends_target_Bates_Advanced_Operating_Systems
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  OBJECT_DIR = CMakeFiles\Bates_Advanced_Operating_Systems.dir
+  OBJECT_FILE_DIR = CMakeFiles\Bates_Advanced_Operating_Systems.dir
+  TARGET_COMPILE_PDB = CMakeFiles\Bates_Advanced_Operating_Systems.dir\
+  TARGET_PDB = Bates_Advanced_Operating_Systems.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Bates_Advanced_Operating_Systems
@@ -72,7 +79,7 @@ build CMakeFiles\Bates_Advanced_Operating_Systems.dir\sdisk.cpp.obj: CXX_COMPILE
 #############################################
 # Link the executable Bates_Advanced_Operating_Systems.exe
 
-build Bates_Advanced_Operating_Systems.exe: CXX_EXECUTABLE_LINKER__Bates_Advanced_Operating_Systems_Debug CMakeFiles\Bates_Advanced_Operating_Systems.dir\Bates_Advanced_Operating_Systems.cpp.obj CMakeFiles\Bates_Advanced_Operating_Systems.dir\passwordfile.cpp.obj CMakeFiles\Bates_Advanced_Operating_Systems.dir\sdisk.cpp.obj
+build Bates_Advanced_Operating_Systems.exe: CXX_EXECUTABLE_LINKER__Bates_Advanced_Operating_Systems_Debug CMakeFiles\Bates_Advanced_Operating_Systems.dir\Bates_Advanced_Operating_Systems.cpp.obj CMakeFiles\Bates_Advanced_Operating_Systems.dir\passwordfile.cpp.obj CMakeFiles\Bates_Advanced_Operating_Systems.dir\sdisk.cpp.obj CMakeFiles\Bates_Advanced_Operating_Systems.dir\filesys.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib

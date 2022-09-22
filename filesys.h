@@ -1,4 +1,8 @@
 #pragma once
+#ifndef FILESYS
+#define FILESYS
+
+
 #include "sdisk.h"
 class Filesys : public Sdisk
 {
@@ -95,3 +99,4 @@ int readfs();
 /// <returns></returns>
 int fssynch();
 };
+#endif

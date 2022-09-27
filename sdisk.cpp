@@ -68,21 +68,24 @@ int Sdisk::getblock(int blocknumber, string& buffer)
 {
 	fstream iofile;
 	iofile.open(this->diskname.c_str(), ios::in | ios::out);
-	if (blocknumber < 0 || blocknumber >= this->numberofblocks)
+	if (iofile.is_open())
 	{
-		cout << "block doesn't exist.";
-		return 0;
-	}
-	else
-	{
-		iofile.seekg(blocksize * blocknumber);
-		buffer.clear();
-		char c;
-		for ( int i = 0; i < blocksize; i++)
+		if (blocknumber < 0 || blocknumber >= this->numberofblocks)
 		{
-			iofile.get(c);
-			buffer.push_back(c);
+			cout << "block doesn't exist.";
+			return 0;
 		}
-		iofile.close();
+		else
+		{
+			iofile.seekg(blocksize * blocknumber);
+			buffer.clear();
+			char c;
+			for (int i = 0; i < blocksize; i++)
+			{
+				iofile.get(c);
+				buffer.push_back(c);
+			}
+			iofile.close();
+		}
 	}
 }

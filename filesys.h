@@ -2,8 +2,10 @@
 #ifndef FILESYS
 #define FILESYS
 
-
 #include "sdisk.h"
+
+using namespace std;
+
 class Filesys : public Sdisk
 {
 public:
@@ -98,5 +100,6 @@ int readfs();
 /// </summary>
 /// <returns></returns>
 int fssynch();
+bool fbcheck(string file, int blocknumber);
 };
 #endif

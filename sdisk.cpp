@@ -89,3 +89,7 @@ int Sdisk::getblock(int blocknumber, string& buffer)
 		}
 	}
 }
+int Sdisk::numofblocks()
+{
+	return numberofblocks;
+}

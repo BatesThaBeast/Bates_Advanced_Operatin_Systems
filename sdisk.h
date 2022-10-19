@@ -33,6 +33,7 @@ int getblock(int blocknumber, string& buffer);
 /// <param name="buffer"></param>
 /// <returns></returns>
 int putblock(int blocknumber, string buffer);
+int numofblocks();
 private:
 string diskname;        // file name of software-disk
 int numberofblocks;     // number of blocks on disk

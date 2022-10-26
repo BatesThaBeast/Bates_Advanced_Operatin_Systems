@@ -1,4 +1,4 @@
-// TODO - make it so the salt is created randomly when a file is created. If a file already exists, then that salt will be the one used by the program.
+
 
 #include "passwordfile.h"
 int PasswordFile::salt = 1;

@@ -7,6 +7,7 @@
 using namespace std;
 class Block
 {
+public:
 	/// <summary>
 	/// Blocks the buffer into a list of blocks of size b
 	/// </summary>

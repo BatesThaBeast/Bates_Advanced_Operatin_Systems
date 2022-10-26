@@ -12,6 +12,7 @@ using namespace std;
 class Sdisk
 {
 public:
+Sdisk();
 /// <summary>
 /// constructor: creation of the disk with the "formatting" of the device. This is meant to replicate a disk drive.
 /// </summary>
@@ -33,7 +34,16 @@ int getblock(int blocknumber, string& buffer);
 /// <param name="buffer"></param>
 /// <returns></returns>
 int putblock(int blocknumber, string buffer);
+/// <summary>
+/// accessor: returns the number of blocks on the sdisk
+/// </summary>
+/// <returns></returns>
 int numofblocks();
+/// <summary>
+/// returns the size of the blocks on the disk
+/// </summary>
+/// <returns></returns>
+int getblocksize();
 private:
 string diskname;        // file name of software-disk
 int numberofblocks;     // number of blocks on disk

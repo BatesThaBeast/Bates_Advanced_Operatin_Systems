@@ -1,5 +1,6 @@
 #include "sdisk.h"
 
+Sdisk::Sdisk();
 Sdisk::Sdisk(string diskname, int numberofblocks, int blocksize)
 {
 	this->diskname = diskname;//initialize diskname
@@ -92,4 +93,8 @@ int Sdisk::getblock(int blocknumber, string& buffer)
 int Sdisk::numofblocks()
 {
 	return numberofblocks;
+}
+int Sdisk::getblocksize()
+{
+	return blocksize;
 }

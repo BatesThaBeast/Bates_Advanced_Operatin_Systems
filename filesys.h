@@ -15,7 +15,7 @@ public:
 /// <param name="diskname"></param>
 /// <param name="number_of_blocks"></param>
 /// <param name="block_size"></param>
-Filesys(string diskname, int number_of_blocks, int block_size);
+Filesys(string diskname, int , int );
 /// <summary>
 /// This module writes FAT and ROOT to the sdisk (closing the sdisk).
 /// </summary>
@@ -79,9 +79,17 @@ int writeblock(string file, int blocknumber, string buffer);
 /// <param name="blocknumber"></param>
 /// <returns></returns>
 int nextblock(string file, int blocknumber);
+/// <summary>
+	/// Blocks the buffer into a list of blocks of size b
+	/// </summary>
+	/// <param name="buffer"></param>
+	/// <param name="b"></param>
+	/// <returns></returns>
+vector<string> block(string buffer, int b);
 private:
 int rootsize; // maximum number of entries in ROOT
 int fatsize; // number of blocks occupied by FAT
+vector<Sdisk> thedisks; // disks within the file system
 vector<string> filename; // filenames in ROOT
 vector<int> firstblock; // firstblocks in ROOT
 vector<int> fat; //FAT

@@ -1,6 +1,5 @@
 #include "sdisk.h"
 
-Sdisk::Sdisk();
 Sdisk::Sdisk(string diskname, int numberofblocks, int blocksize)
 {
 	this->diskname = diskname;//initialize diskname
@@ -13,6 +12,7 @@ Sdisk::Sdisk(string diskname, int numberofblocks, int blocksize)
 		indisk.close();
 		ofstream outdisk;//variable that will create file
 		outdisk.open(diskname.c_str());//create file
+		
 		for (size_t i = 0; i < numberofblocks; i++)//loop through up to the number of blocks
 		{
 			for (size_t j = 0; j < blocksize; j++)//loop through up to the block size
@@ -97,4 +97,8 @@ int Sdisk::numofblocks()
 int Sdisk::getblocksize()
 {
 	return blocksize;
+}
+int Sdisk::getstatus()
+{
+	return 0;
 }

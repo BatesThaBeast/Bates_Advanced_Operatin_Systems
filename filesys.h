@@ -15,7 +15,7 @@ public:
 /// <param name="diskname"></param>
 /// <param name="number_of_blocks"></param>
 /// <param name="block_size"></param>
-Filesys(string diskname, int , int );
+Filesys(string diskname, int number_of_blocks, int block_size);
 /// <summary>
 /// This module writes FAT and ROOT to the sdisk (closing the sdisk).
 /// </summary>
@@ -34,7 +34,7 @@ int newfile(string file);
 /// <returns></returns>
 int rmfile(string file);
 /// <summary>
-/// This function returns the block number of the first block in file. It returns the error code of 0 if the file does not exist.
+/// This function returns the block number of the first block in file. It returns the error code of -1 if the file does not exist.
 /// </summary>
 /// <param name="file"></param>
 /// <returns></returns>
@@ -80,13 +80,25 @@ int writeblock(string file, int blocknumber, string buffer);
 /// <returns></returns>
 int nextblock(string file, int blocknumber);
 /// <summary>
-	/// Blocks the buffer into a list of blocks of size b
-	/// </summary>
-	/// <param name="buffer"></param>
-	/// <param name="b"></param>
-	/// <returns></returns>
+/// initializes the root
+/// </summary>
+/// <returns></returns>
+int initroot();
+/// <summary>
+/// initializes the fat
+/// </summary>
+/// <returns></returns>
+int initfat();
+/// <summary>
+/// Blocks the buffer into a list of blocks of size b
+/// </summary>
+/// <param name="buffer"></param>
+/// <param name="b"></param>
+/// <returns></returns>
 vector<string> block(string buffer, int b);
+vector<string> ls();
 private:
+static const char delimiter = ' ';//used to make a space between blocks when writing to file
 int rootsize; // maximum number of entries in ROOT
 int fatsize; // number of blocks occupied by FAT
 vector<Sdisk> thedisks; // disks within the file system

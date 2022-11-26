@@ -7,6 +7,6 @@ project ("Bates_Advanced_Operating_Systems")
 
 # Add source to this project's executable.
 add_executable (Bates_Advanced_Operating_Systems "Bates_Advanced_Operating_Systems.cpp" "Bates_Advanced_Operating_Systems.h" "passwordfile.cpp" "passwordfile.h"
-"sdisk.cpp" "sdisk.h" "filesys.h" "filesys.cpp" "block.h" "block.cpp")
+"sdisk.cpp" "sdisk.h" "filesys.h" "filesys.cpp" "block.h" "block.cpp" "shell.h" "shell.cpp" "table.h" "table.cpp")
 
 # TODO: Add tests and install targets if needed.

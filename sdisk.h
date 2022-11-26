@@ -3,6 +3,7 @@
 #define SDISK
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -44,9 +45,15 @@ int numofblocks();
 /// </summary>
 /// <returns></returns>
 int getblocksize();
+/// <summary>
+/// accessor:returns the status of the filesystem.
+/// </summary>
+/// <returns></returns>
+int getstatus();
 private:
 string diskname;        // file name of software-disk
 int numberofblocks;     // number of blocks on disk
 int blocksize;          // block size in bytes
+int diskstatus;			// the status of the disk
 };
 #endif

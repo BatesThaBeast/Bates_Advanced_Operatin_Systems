@@ -1,10 +1,15 @@
 # ninja log v5
-0	681	6849599599290354	CMakeFiles/Bates_Advanced_Operating_Systems.dir/passwordfile.cpp.obj	5ef267c14e4c6326
-1	181	6855786847263582	build.ninja	51af2eaa4cb8c175
-1	655	6852383676417776	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	fc5052165843b75b
-494	652	6852403286125075	Bates_Advanced_Operating_Systems.exe	a20167b997825855
-1	493	6852403284865341	CMakeFiles/Bates_Advanced_Operating_Systems.dir/sdisk.cpp.obj	cb03bd82903329b0
-13	1005	6860146364515208	CMakeFiles/Bates_Advanced_Operating_Systems.dir/block.cpp.obj	3edb047030fed65f
-0	1123	6860146365664859	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	fc5052165843b75b
-5	1213	6860146366454574	CMakeFiles/Bates_Advanced_Operating_Systems.dir/sdisk.cpp.obj	cb03bd82903329b0
-0	869	6884571692650528	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	fc5052165843b75b
+0	779	6897214209757956	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	9db8bcbdfd21a5ee
+0	1140	6897202653058466	CMakeFiles/Bates_Advanced_Operating_Systems.dir/filesys.cpp.obj	8f11fdd3d3155ece
+13	1109	6896672327764382	CMakeFiles/Bates_Advanced_Operating_Systems.dir/block.cpp.obj	3a9b07e48d926d0c
+1	1110	6896672327934329	CMakeFiles/Bates_Advanced_Operating_Systems.dir/passwordfile.cpp.obj	5d70bfcfb53d5f7d
+5	968	6897184464701043	CMakeFiles/Bates_Advanced_Operating_Systems.dir/sdisk.cpp.obj	84f18da2fdde9142
+780	1021	6897214211709121	Bates_Advanced_Operating_Systems.exe	78dfa0d085a019d7
+9	1190	6911485804603363	CMakeFiles/Bates_Advanced_Operating_Systems.dir/sdisk.cpp.obj	84f18da2fdde9142
+6	1195	6911485804423421	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	9db8bcbdfd21a5ee
+13	1203	6911485804673340	CMakeFiles/Bates_Advanced_Operating_Systems.dir/filesys.cpp.obj	8f11fdd3d3155ece
+16	1206	6911485804713331	CMakeFiles/Bates_Advanced_Operating_Systems.dir/table.cpp.obj	497ce053d94a0a4e
+1	709	6911488844564464	CMakeFiles/Bates_Advanced_Operating_Systems.dir/shell.cpp.obj	bc016ce1a9ab9bbe
+710	1118	6911488847763621	Bates_Advanced_Operating_Systems.exe	d5723c1038a92ebe
+1	508	6911489041045121	CMakeFiles/Bates_Advanced_Operating_Systems.dir/shell.cpp.obj	bc016ce1a9ab9bbe
+509	677	6911489042354705	Bates_Advanced_Operating_Systems.exe	d5723c1038a92ebe

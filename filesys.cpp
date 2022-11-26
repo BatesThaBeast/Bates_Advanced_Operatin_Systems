@@ -3,6 +3,14 @@
 #include <iomanip>
 Filesys::Filesys(string diskname, int number_of_blocks, int block_size) : Sdisk(diskname, number_of_blocks, block_size)
 {
+	this->rootsize = this->getblocksize() / 12;
+	int bytereq = this->numofblocks() * 6;
+	this->fatsize = (bytereq / this->getblocksize()) + (bytereq % this->getblocksize() > 0);
+
+	this->initroot();
+	this->initfat();
+
+	this->fssynch();
 }
 
 int Filesys::fsclose()
@@ -11,64 +19,56 @@ int Filesys::fsclose()
 }
 int Filesys::newfile(string file)
 {
-	for (int i = 0; i < filename.size(); i++)
+	if (this->getfirstblock(file) != -1)
 	{
-		if (filename[i] == file)
+		return 0;
+	}
+	for (int i = 0; i < this->filename.size(); i++)
+	{
+		if (this->filename[i] == ".....")
 		{
-			return -1;
-		}
-		if (filename[i] == "XXXXXX")
-		{
-			filename[i] = file;
-			firstblock[i] = 0;
-			fssynch();
-			return 1;
+			this->filename[i] = file;
+			this->firstblock[i] = 0;
+			return this->fssynch();
 		}
 	}
 	return 0;
 }
 int Filesys::rmfile(string file)
 {
+	// Parse through the filename vector to find the correct file.
 	for (int i = 0; i < filename.size(); i++)
 	{
-		if (filename[i] == file)
+		if (filename[i] == file)// if the file is found
 		{
-			if (firstblock[i] == 0)
+			if (firstblock[i] == 0)// 0 would indicate the end of a file in this case an empty file.
 			{
-				filename[i] = "XXXXXX";
-				fssynch();
-				return 1;
-			}
-			else
-			{
-				return 0;
-			}
+				filename[i] = "XXXXXX";// simulating the removal of the file
+				fssynch();// writing updates of the vectors to the system
+				return 1;// return 1 for success of removal
+			}			
 		}
 	}
-	return -1;
+	return 0;// if the file name was found, but it isn't an empty file
 }
 int Filesys::getfirstblock(string file)
 {
-	// Shorten filenames greater than 5 chars to 5
-	if (file.length() > 5)
-		file = file.substr(0, 5);
-
+	// Parse through the filename vector to find the correct file.	
 	for (int i = 0; i < this->filename.size(); i++)
-		if (this->filename[i] == file)
+	{
+		if (this->filename[i] == file)// If the file is found, return the same index of the vector firstblock.
 			return this->firstblock[i];
-
+	}
+	// If there is no file to be found, then we return the error code of 0
+	// which will be used to signify a failure.
 	return -1;
 }
 int Filesys::addblock(string file, string block)
 {
-	// Shorten filenames greater than 5 chars to 5
-	if (file.length() > 5)
-		file = file.substr(0, 5);
-
 	// There Is No Free Blocks
 	if (this->fat[0] == 0)
-		return 0;
-
+		return -1;
+	// This is where the block will be added according to the FAT
 	int alloc = this->fat[0];
 
 	// Run Switch On First Block
@@ -159,11 +159,21 @@ int Filesys::writeblock(string file, int blocknumber, string buffer)
 }
 int Filesys::nextblock(string file, int blocknumber)
 {
-	//TODO - Write nextblock()
+	if (fbcheck(file, blocknumber))// check to see if file and block exist
+	{
+
+		if (this->fat[blocknumber] == 0)// check to see if block is end of file
+		{
+			return 0;
+		}
+		else return this->fat[blocknumber];// return what block the blocknumber is pointing to, aka the next block
+	}
+	else return -1;// either file not found or blocknumber not found
 }
 int Filesys::buildfs()
 {
 	//TODO - Write buildfs()
+	return 0;
 }
 int Filesys::readfs()
 {
@@ -204,7 +214,6 @@ int Filesys::readfs()
 }
 int Filesys::fssynch()
 {
-	//TODO - Write fssynch()
 	stringstream ssBuffer;
 
 	//Write Root To SDisk
@@ -241,8 +250,80 @@ bool Filesys::fbcheck(string file, int blocknumber)
 	}
 	return false;
 }
+int Filesys::initroot()
+{
+	stringstream ssBuffer;
+	// Setup Root With Default Values
+	for (int i = 0; i < this->rootsize; i++)
+	{
+		ssBuffer << "....." << this->delimiter << "00000" << this->delimiter;
+	}
+	
+	/*
+	else { // FileSystem Previously Existed
+		string temp;
+		this->getblock(0, temp);
+		ssBuffer << temp;
+	}
+	*/
+	vector<string>vecRoot = block(ssBuffer.str(), this->getblocksize());
+	ssBuffer.str(vecRoot[0]);
 
+	{ // Local Scope
+		int i;
+		string entry;
+		for (i = 0; i < (this->rootsize * 2) && getline(ssBuffer, entry,
+			this->delimiter); i++)
+		{
+			if (i % 2 == 0)
+				this->filename.push_back(entry);
+			else
+				this->firstblock.push_back(std::stoi(entry, nullptr, 10));
+		}
+	}
 
+	return 1;
+}
+int Filesys::initfat()
+{
+	stringstream ssBuffer;
+	int dataStart = 1 + this->fatsize;
+
+		// Setup Fat With Default Variables
+		ssBuffer << setw(5) << setfill('0') << dataStart << this->delimiter;
+		for (int i = 1; i < dataStart; i++)
+			ssBuffer << "00000" << this->delimiter;
+		for (int i = dataStart; i < (this->numofblocks() - 1); i++)
+			ssBuffer << setw(5) << setfill('0') << (i + 1) << this->delimiter;
+		ssBuffer << "00000" << this->delimiter;
+	
+	/*
+	else 
+	{  // filesystem already exist
+		string temp;
+		for (int i = 1; i < dataStart; i++) {
+			this->getblock(i, temp);
+			ssBuffer << temp;
+		}
+	}
+	*/
+	vector<string> vecFAT = block(ssBuffer.str(), this->getblocksize());
+	ssBuffer.str("");
+	for (int i = 0; i < vecFAT.size(); i++)
+		ssBuffer << vecFAT[i];
+
+	{ // Local Scope
+		int i;
+		string entry;
+		for (i = 0; i < this->numofblocks() && getline(ssBuffer, entry,
+			this->delimiter); i++)
+		{
+			this->fat.push_back(std::stoi(entry, nullptr, 10));
+		}
+	}
+
+	return 1;
+}
 vector<string> Filesys::block(string buffer, int b)
 {
 	vector<string> blocks;//will hold the buffer in blocks
@@ -272,4 +353,16 @@ vector<string> Filesys::block(string buffer, int b)
 	}
 
 	return blocks;
+}
+vector<string> Filesys::ls()
+{
+	vector<string> flist;
+	for (int i = 0; i < filename.size(); i++)
+	{
+		if (filename[i] != "XXXXX") 
+		{
+			flist.push_back(filename[i]);
+		}
+	}
+	return flist;
 }

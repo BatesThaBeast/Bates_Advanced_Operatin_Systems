@@ -1,15 +1,11 @@
 # ninja log v5
-0	779	6897214209757956	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	9db8bcbdfd21a5ee
-0	1140	6897202653058466	CMakeFiles/Bates_Advanced_Operating_Systems.dir/filesys.cpp.obj	8f11fdd3d3155ece
+1	691	6918988490605739	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	9db8bcbdfd21a5ee
+13	1203	6911485804673340	CMakeFiles/Bates_Advanced_Operating_Systems.dir/filesys.cpp.obj	8f11fdd3d3155ece
 13	1109	6896672327764382	CMakeFiles/Bates_Advanced_Operating_Systems.dir/block.cpp.obj	3a9b07e48d926d0c
 1	1110	6896672327934329	CMakeFiles/Bates_Advanced_Operating_Systems.dir/passwordfile.cpp.obj	5d70bfcfb53d5f7d
-5	968	6897184464701043	CMakeFiles/Bates_Advanced_Operating_Systems.dir/sdisk.cpp.obj	84f18da2fdde9142
-780	1021	6897214211709121	Bates_Advanced_Operating_Systems.exe	78dfa0d085a019d7
-9	1190	6911485804603363	CMakeFiles/Bates_Advanced_Operating_Systems.dir/sdisk.cpp.obj	84f18da2fdde9142
-6	1195	6911485804423421	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	9db8bcbdfd21a5ee
-13	1203	6911485804673340	CMakeFiles/Bates_Advanced_Operating_Systems.dir/filesys.cpp.obj	8f11fdd3d3155ece
-16	1206	6911485804713331	CMakeFiles/Bates_Advanced_Operating_Systems.dir/table.cpp.obj	497ce053d94a0a4e
-1	709	6911488844564464	CMakeFiles/Bates_Advanced_Operating_Systems.dir/shell.cpp.obj	bc016ce1a9ab9bbe
-710	1118	6911488847763621	Bates_Advanced_Operating_Systems.exe	d5723c1038a92ebe
 1	508	6911489041045121	CMakeFiles/Bates_Advanced_Operating_Systems.dir/shell.cpp.obj	bc016ce1a9ab9bbe
-509	677	6911489042354705	Bates_Advanced_Operating_Systems.exe	d5723c1038a92ebe
+9	1190	6911485804603363	CMakeFiles/Bates_Advanced_Operating_Systems.dir/sdisk.cpp.obj	84f18da2fdde9142
+692	873	6918988492168233	Bates_Advanced_Operating_Systems.exe	d5723c1038a92ebe
+16	1206	6911485804713331	CMakeFiles/Bates_Advanced_Operating_Systems.dir/table.cpp.obj	497ce053d94a0a4e
+1	1109	6922220653345886	CMakeFiles/Bates_Advanced_Operating_Systems.dir/Bates_Advanced_Operating_Systems.cpp.obj	9db8bcbdfd21a5ee
+1110	1575	6922220657152564	Bates_Advanced_Operating_Systems.exe	d5723c1038a92ebe
